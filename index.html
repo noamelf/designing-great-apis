@@ -9,14 +9,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>designing-pythonic-apis slides</title>
+<title>designing-great-apis slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <!-- General and theme style sheets -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/css/reveal.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -24,14 +24,14 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/css/print/pdf.css';
+        link.href = 'reveal.js/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
 }
 
 </script>
 
 <!--[if lt IE 9]>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/lib/js/html5shiv.js"></script>
+<script src="reveal.js/lib/js/html5shiv.js"></script>
 <![endif]-->
 
 <!-- Loading the mathjax macro -->
@@ -67,8 +67,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 *
 */
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1163,7 +1163,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2592,7 +2591,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3083,7 +3081,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8814,6 +8811,9 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
+[dir="rtl"] #ipython_notebook {
+  float: right !important;
+}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -9016,8 +9016,14 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
+[dir="rtl"] #tabs li {
+  float: right;
+}
 ul#tabs {
   margin-bottom: 4px;
+}
+[dir="rtl"] ul#tabs {
+  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -9040,6 +9046,16 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
+}
+[dir="rtl"] .list_toolbar .tree-buttons {
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-right {
+  padding-top: 1px;
+  float: left !important;
+}
+[dir="rtl"] .list_toolbar .pull-left {
+  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9176,6 +9192,9 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
+[dir="rtl"] #tree-selector a {
+  float: right;
+}
 #button-select-all {
   min-width: 50px;
 }
@@ -9265,6 +9284,9 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
+[dir="rtl"] #new-menu {
+  text-align: right;
+}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9309,6 +9331,9 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
+}
+[dir="rtl"] #running .col-sm-8 {
+  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9605,6 +9630,7 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
+  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9625,11 +9651,6 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-}
-@-moz-document url-prefix() {
-  div.inner_cell {
-    overflow-x: hidden;
-  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11300,7 +11321,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 20ex;
+  width: 21ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11612,6 +11633,7 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
+  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11625,6 +11647,9 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
+}
+.terminal-app .terminal .xterm-rows {
+  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11685,8 +11710,10 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11697,9 +11724,11 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11830,11 +11859,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Designing-Great-API's">Designing Great API's<a class="anchor-link" href="#Designing-Great-API's">&#182;</a></h1><p>(Learning from Kenneth Reitz's <code>requests</code>)</p>
-<p>Noam Elfanbaum<br>
-Backend developer @CloudLock<br>
-<a href="http://noamelf.com">noamelf.com</a> | <a href="https://twitter.com/noamelf">@noamelf</a></p>
-
+<h1 id="Designing-Pythonic-API's">Designing Pythonic API's<a class="anchor-link" href="#Designing-Pythonic-API's">&#182;</a></h1>
 </div>
 </div>
 </div></section></section><section><section>
@@ -11846,7 +11871,7 @@ Backend developer @CloudLock<br>
 <ul>
 <li>When writing a package (library), providing it with a good API, is almost as important as it's functionality itself. </li>
 <li>In this talk, we'll be following Kenneth Reitz popular <a href="http://docs.python-requests.org/en/master/">requests</a> (HTTP for Humans) package, and see what makes it so easy and simple to use.</li>
-<li><strong>Python 3.5</strong> and <strong>requests 2.10.0</strong> will be used throughout our investigation  </li>
+<li><strong>Python3</strong> will be used throughout our investigation  </li>
 </ul>
 
 </div>
@@ -11858,10 +11883,8 @@ Backend developer @CloudLock<br>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Requests-vs.-urllib">Requests vs. urllib<a class="anchor-link" href="#Requests-vs.-urllib">&#182;</a></h2><ul>
-<li>We'll compare <code>requests</code> and <code>urllib</code> in a few typical HTTP usage scenarios.</li>
-<li>You'll get a chance to say which package provide a better API for that action (hint: requests) and why?</li>
-<li>We'll formualate together some basic advice on what makes a good API.</li>
-<li>In some of the cases we will also review <code>requests</code> implementation.</li>
+<li>By reviewing how <code>requests</code> compares to <code>urllib</code> in some typical HTTP usage scenarios, we will extract some tips on what makes a good API.</li>
+<li>In some of the cases we will also review <code>requests</code> implementation. </li>
 </ul>
 
 </div>
@@ -11872,16 +11895,16 @@ Backend developer @CloudLock<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Use-case-#1:-sending-a-GET-request">Use case #1: sending a GET request<a class="anchor-link" href="#Use-case-#1:-sending-a-GET-request">&#182;</a></h2>
+<h2 id="Tip-#1:-Explicit-(API-endpoints)-is-better-than-implicit">Tip #1: Explicit (API endpoints) is better than implicit<a class="anchor-link" href="#Tip-#1:-Explicit-(API-endpoints)-is-better-than-implicit">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.request</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.request</span>
 <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;http://python.org/&#39;</span><span class="p">)</span>
 </pre></div>
 
@@ -11889,49 +11912,17 @@ Backend developer @CloudLock<br>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[40]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;http.client.HTTPResponse at 0x7fdb08b1bba8&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://python.org/&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[41]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;Response [200]&gt;</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -11941,10 +11932,11 @@ Backend developer @CloudLock<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Explicit-(API-endpoints)-is-better-than-implicit">Explicit (API endpoints) is better than implicit<a class="anchor-link" href="#Explicit-(API-endpoints)-is-better-than-implicit">&#182;</a></h3><ul>
+<ul>
 <li>Notice how requests is more concise (hence, clear) about what it will do. </li>
 <li><code>urllib</code> is getting told implicitly to send a GET request since it didn't receive a data argument</li>
 <li><code>requests</code> function name explicitly mark what it will do. </li>
+<li>Another thing we can see here is that <code>requests</code> returns a helpful string with the request status code when examining it (implements <code>__repr__()</code>)</li>
 </ul>
 
 </div>
@@ -11955,29 +11947,7 @@ Backend developer @CloudLock<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Helpful-object-representation">Helpful object representation<a class="anchor-link" href="#Helpful-object-representation">&#182;</a></h3><ul>
-<li><code>requests</code> returns a helpful string with the request status code when examining it (implements <code>__repr__()</code>)</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Libraries-code">Libraries code<a class="anchor-link" href="#Libraries-code">&#182;</a></h3>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://github.com/kennethreitz/requests/blob/v2.10.0/requests/api.py">requests/api.py</a>:</p>
-
+<h4 id="Implementation"><a href="https://github.com/kennethreitz/requests/blob/master/requests/api.py">Implementation</a><a class="anchor-link" href="#Implementation">&#182;</a></h4>
 </div>
 </div>
 </div><div class="fragment">
@@ -11986,15 +11956,15 @@ Backend developer @CloudLock<br>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">with</span> <span class="n">sessions</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;allow_redirects&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;allow_redirects&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">request</span><span class="p">(</span><span class="s1">&#39;get&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">request</span><span class="p">(</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 
@@ -12021,68 +11991,36 @@ Backend developer @CloudLock<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Use-case-#2:-getting-a-request-status-code">Use case #2: getting a request status code<a class="anchor-link" href="#Use-case-#2:-getting-a-request-status-code">&#182;</a></h2>
+<h2 id="Tip-#2:-No-need-for-getters-and-setters">Tip #2: No need for getters and setters<a class="anchor-link" href="#Tip-#2:-No-need-for-getters-and-setters">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.request</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;http://python.org/&#39;</span><span class="p">)</span>
-<span class="n">r</span><span class="o">.</span><span class="n">getcode</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;http://python.org/&#39;</span><span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">getcode</span><span class="p">()</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[42]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>200</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://python.org/&#39;</span><span class="p">)</span>
 <span class="n">r</span><span class="o">.</span><span class="n">status_code</span>
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[43]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>200</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -12092,7 +12030,7 @@ Backend developer @CloudLock<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="No-need-for-getters-and-setters">No need for getters and setters<a class="anchor-link" href="#No-need-for-getters-and-setters">&#182;</a></h3><ul>
+<ul>
 <li>Accessing an object property as an actual property (and not a method call) makes the code a little clearer. </li>
 <li>If you come from other OOP language (hmmm... Java), you might be tempted to use getters and setters to allow future changes to the object properties. </li>
 <li>No need for that in Python, just use the <a href="http://www.programiz.com/python-programming/property"><strong><code>@property</code></strong></a> decorator.</li>
@@ -12100,50 +12038,13 @@ Backend developer @CloudLock<br>
 
 </div>
 </div>
-</div></section><section>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Libraries-code">Libraries code<a class="anchor-link" href="#Libraries-code">&#182;</a></h3>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://github.com/python/cpython/blob/3.5/Lib/http/client.py#L737">http/client.py</a>:</p>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">HTTPResponse</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BufferedIOBase</span><span class="p">):</span>
-    
-    <span class="c1"># ...</span>
-    
-    <span class="k">def</span> <span class="nf">getcode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Use-case-#3:-encoding,-sending-and-decoding-a-POST-request">Use case #3: encoding, sending and decoding a POST request<a class="anchor-link" href="#Use-case-#3:-encoding,-sending-and-decoding-a-POST-request">&#182;</a></h2>
+<h2 id="Tip-#3:-Easy-access-to-common-functionality">Tip #3: Easy access to common functionality<a class="anchor-link" href="#Tip-#3:-Easy-access-to-common-functionality">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
@@ -12152,7 +12053,7 @@ Backend developer @CloudLock<br>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.parse</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.parse</span>
 <span class="kn">import</span> <span class="nn">urllib.request</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
@@ -12175,7 +12076,7 @@ Backend developer @CloudLock<br>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://www.httpbin.org/post&#39;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span> <span class="p">:</span> <span class="s1">&#39;Michael Foord&#39;</span><span class="p">}</span>
@@ -12194,7 +12095,7 @@ Backend developer @CloudLock<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Easy-access-to-common-functionality">Easy access to common functionality<a class="anchor-link" href="#Easy-access-to-common-functionality">&#182;</a></h3><ul>
+<ul>
 <li><code>requests</code> provides an out-of-the-box experience for the encoding of the data and loading the<code>json</code> response while in <code>urllib</code>...</li>
 <li>When creating your API think: how will my package be commonly use? What plugs can I add to make that usage easier?</li>
 </ul>
@@ -12214,10 +12115,10 @@ Backend developer @CloudLock<br>
 </div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://www.httpbin.org/post&#39;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span> <span class="p">:</span> <span class="s1">&#39;Michael Foord&#39;</span><span class="p">}</span>
@@ -12230,13 +12131,43 @@ Backend developer @CloudLock<br>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[19]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;args&#39;: {},
+ &#39;data&#39;: &#39;{&#34;name&#34;: &#34;Michael Foord&#34;}&#39;,
+ &#39;files&#39;: {},
+ &#39;form&#39;: {},
+ &#39;headers&#39;: {&#39;Accept&#39;: &#39;*/*&#39;,
+  &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;,
+  &#39;Content-Length&#39;: &#39;25&#39;,
+  &#39;Content-Type&#39;: &#39;application/json&#39;,
+  &#39;Host&#39;: &#39;www.httpbin.org&#39;,
+  &#39;User-Agent&#39;: &#39;python-requests/2.10.0&#39;},
+ &#39;json&#39;: {&#39;name&#39;: &#39;Michael Foord&#39;},
+ &#39;origin&#39;: &#39;5.29.130.38&#39;,
+ &#39;url&#39;: &#39;http://www.httpbin.org/post&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Use-case-#4:-sending-authenticated-request">Use case #4: sending authenticated request<a class="anchor-link" href="#Use-case-#4:-sending-authenticated-request">&#182;</a></h2>
+<h2 id="Tip-#4:-Prefer-Python-data-types-over-self-made-ones">Tip #4: Prefer Python data types over self-made ones<a class="anchor-link" href="#Tip-#4:-Prefer-Python-data-types-over-self-made-ones">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
@@ -12245,12 +12176,12 @@ Backend developer @CloudLock<br>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.request</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.request</span>
 
 <span class="n">gh_url</span> <span class="o">=</span> <span class="s1">&#39;https://api.github.com/user&#39;</span>
 
 <span class="n">password_mgr</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">HTTPPasswordMgrWithDefaultRealm</span><span class="p">()</span>
-<span class="n">password_mgr</span><span class="o">.</span><span class="n">add_password</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">gh_url</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;pswd&#39;</span><span class="p">)</span>
+<span class="n">password_mgr</span><span class="o">.</span><span class="n">add_password</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">gh_url</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;pswd&#39;</span><span class="p">)</span>
 <span class="n">handler</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">HTTPBasicAuthHandler</span><span class="p">(</span><span class="n">password_mgr</span><span class="p">)</span>
 
 <span class="n">opener</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
@@ -12267,7 +12198,7 @@ Backend developer @CloudLock<br>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://api.github.com/user&#39;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;pswd&#39;</span><span class="p">))</span>
 </pre></div>
@@ -12277,30 +12208,13 @@ Backend developer @CloudLock<br>
 </div>
 
 </div></div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">session</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
-<span class="n">session</span><span class="o">.</span><span class="n">auth</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">HTTPBasicAuth</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;pswd&#39;</span><span class="p">)</span>
-<span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://api.github.com/user&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div></section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Prefer-Python-data-types-over-self-made-ones">Prefer Python data types over self-made ones<a class="anchor-link" href="#Prefer-Python-data-types-over-self-made-ones">&#182;</a></h3><ul>
-<li><code>requests</code> usage of Python's data structures makes it very easy to use. No need to get to know internal <code>requests</code> packages.</li>
+<ul>
+<li><code>requests</code> uses Python's data structures to pass the authentication information whereas <code>urllib</code> demands you create a special class for that. </li>
 </ul>
 
 </div>
@@ -12311,30 +12225,7 @@ Backend developer @CloudLock<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Provide-possibilities-for-simple-and-advanced-usage">Provide possibilities for simple and advanced usage<a class="anchor-link" href="#Provide-possibilities-for-simple-and-advanced-usage">&#182;</a></h3><ul>
-<li><code>requests</code> allow concise usage, when sending a single request, and a more verbose one for multiple requests.</li>
-<li>Don't make the user go through a lengthy process when he needs a simple use case.</li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Libraries-code">Libraries code<a class="anchor-link" href="#Libraries-code">&#182;</a></h3>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://github.com/kennethreitz/requests/blob/v2.10.0/requests/models.py#L488">requests/models.py</a>:</p>
-
+<h4 id="Implementation:"><a href="https://github.com/kennethreitz/requests/blob/fb014560611f6ebb97e7deb03ad8336c3c8f2db1/requests/models.py#L497-L497">Implementation</a>:<a class="anchor-link" href="#Implementation:">&#182;</a></h4>
 </div>
 </div>
 </div><div class="fragment">
@@ -12343,7 +12234,7 @@ Backend developer @CloudLock<br>
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">prepare_auth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">prepare_auth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">auth</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Prepares the given HTTP auth data.&quot;&quot;&quot;</span>
 
     <span class="c1"># ...</span>
@@ -12376,18 +12267,29 @@ Backend developer @CloudLock<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Use-case-#5:-handling-errors">Use case #5: handling errors<a class="anchor-link" href="#Use-case-#5:-handling-errors">&#182;</a></h2>
+<h2 id="Tip-#5:-Extensions-are-a-package-best-friend">Tip #5: Extensions are a package best friend<a class="anchor-link" href="#Tip-#5:-Extensions-are-a-package-best-friend">&#182;</a></h2>
 </div>
 </div>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="k">import</span> <span class="n">urlopen</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;http://www.httpbin.org/geta&#39;</span><span class="p">)</span>
-<span class="n">response</span><span class="o">.</span><span class="n">getcode</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">requests.auth</span> <span class="kn">import</span> <span class="n">AuthBase</span>
+
+<span class="k">class</span> <span class="nc">PizzaAuth</span><span class="p">(</span><span class="n">AuthBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Attaches HTTP Pizza Authentication to the given Request object.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">):</span>
+        <span class="c1"># setup any auth-related data here</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">username</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+        <span class="c1"># modify and return the request</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;X-Pizza&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">username</span>
+        <span class="k">return</span> <span class="n">r</span>
+        
+<span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org/get&#39;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">PizzaAuth</span><span class="p">(</span><span class="s1">&#39;kenneth&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -12398,89 +12300,20 @@ Backend developer @CloudLock<br>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">HTTPError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-45-5fba039d189a&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-green-fg">from</span> urllib<span class="ansi-blue-fg">.</span>request <span class="ansi-green-fg">import</span> urlopen
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>response <span class="ansi-blue-fg">=</span> urlopen<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;http://www.httpbin.org/geta&#39;</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span> response<span class="ansi-blue-fg">.</span>getcode<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<div class="output_area">
+<div class="prompt output_prompt">Out[16]:</div>
 
-<span class="ansi-green-fg">/usr/lib/python3.5/urllib/request.py</span> in <span class="ansi-cyan-fg">urlopen</span><span class="ansi-blue-fg">(url, data, timeout, cafile, capath, cadefault, context)</span>
-<span class="ansi-green-intense-fg ansi-bold">    161</span>     <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    162</span>         opener <span class="ansi-blue-fg">=</span> _opener
-<span class="ansi-green-fg">--&gt; 163</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">return</span> opener<span class="ansi-blue-fg">.</span>open<span class="ansi-blue-fg">(</span>url<span class="ansi-blue-fg">,</span> data<span class="ansi-blue-fg">,</span> timeout<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    164</span> 
-<span class="ansi-green-intense-fg ansi-bold">    165</span> <span class="ansi-green-fg">def</span> install_opener<span class="ansi-blue-fg">(</span>opener<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">/usr/lib/python3.5/urllib/request.py</span> in <span class="ansi-cyan-fg">open</span><span class="ansi-blue-fg">(self, fullurl, data, timeout)</span>
-<span class="ansi-green-intense-fg ansi-bold">    470</span>         <span class="ansi-green-fg">for</span> processor <span class="ansi-green-fg">in</span> self<span class="ansi-blue-fg">.</span>process_response<span class="ansi-blue-fg">.</span>get<span class="ansi-blue-fg">(</span>protocol<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    471</span>             meth <span class="ansi-blue-fg">=</span> getattr<span class="ansi-blue-fg">(</span>processor<span class="ansi-blue-fg">,</span> meth_name<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">--&gt; 472</span><span class="ansi-red-fg">             </span>response <span class="ansi-blue-fg">=</span> meth<span class="ansi-blue-fg">(</span>req<span class="ansi-blue-fg">,</span> response<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    473</span> 
-<span class="ansi-green-intense-fg ansi-bold">    474</span>         <span class="ansi-green-fg">return</span> response
-
-<span class="ansi-green-fg">/usr/lib/python3.5/urllib/request.py</span> in <span class="ansi-cyan-fg">http_response</span><span class="ansi-blue-fg">(self, request, response)</span>
-<span class="ansi-green-intense-fg ansi-bold">    580</span>         <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> <span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">200</span> <span class="ansi-blue-fg">&lt;=</span> code <span class="ansi-blue-fg">&lt;</span> <span class="ansi-cyan-fg">300</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    581</span>             response = self.parent.error(
-<span class="ansi-green-fg">--&gt; 582</span><span class="ansi-red-fg">                 &#39;http&#39;, request, response, code, msg, hdrs)
-</span><span class="ansi-green-intense-fg ansi-bold">    583</span> 
-<span class="ansi-green-intense-fg ansi-bold">    584</span>         <span class="ansi-green-fg">return</span> response
-
-<span class="ansi-green-fg">/usr/lib/python3.5/urllib/request.py</span> in <span class="ansi-cyan-fg">error</span><span class="ansi-blue-fg">(self, proto, *args)</span>
-<span class="ansi-green-intense-fg ansi-bold">    508</span>         <span class="ansi-green-fg">if</span> http_err<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    509</span>             args <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span>dict<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;default&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;http_error_default&#39;</span><span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">+</span> orig_args
-<span class="ansi-green-fg">--&gt; 510</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_call_chain<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    511</span> 
-<span class="ansi-green-intense-fg ansi-bold">    512</span> <span class="ansi-red-fg"># XXX probably also want an abstract factory that knows when it makes</span>
-
-<span class="ansi-green-fg">/usr/lib/python3.5/urllib/request.py</span> in <span class="ansi-cyan-fg">_call_chain</span><span class="ansi-blue-fg">(self, chain, kind, meth_name, *args)</span>
-<span class="ansi-green-intense-fg ansi-bold">    442</span>         <span class="ansi-green-fg">for</span> handler <span class="ansi-green-fg">in</span> handlers<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    443</span>             func <span class="ansi-blue-fg">=</span> getattr<span class="ansi-blue-fg">(</span>handler<span class="ansi-blue-fg">,</span> meth_name<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">--&gt; 444</span><span class="ansi-red-fg">             </span>result <span class="ansi-blue-fg">=</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    445</span>             <span class="ansi-green-fg">if</span> result <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    446</span>                 <span class="ansi-green-fg">return</span> result
-
-<span class="ansi-green-fg">/usr/lib/python3.5/urllib/request.py</span> in <span class="ansi-cyan-fg">http_error_default</span><span class="ansi-blue-fg">(self, req, fp, code, msg, hdrs)</span>
-<span class="ansi-green-intense-fg ansi-bold">    588</span> <span class="ansi-green-fg">class</span> HTTPDefaultErrorHandler<span class="ansi-blue-fg">(</span>BaseHandler<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    589</span>     <span class="ansi-green-fg">def</span> http_error_default<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> req<span class="ansi-blue-fg">,</span> fp<span class="ansi-blue-fg">,</span> code<span class="ansi-blue-fg">,</span> msg<span class="ansi-blue-fg">,</span> hdrs<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 590</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">raise</span> HTTPError<span class="ansi-blue-fg">(</span>req<span class="ansi-blue-fg">.</span>full_url<span class="ansi-blue-fg">,</span> code<span class="ansi-blue-fg">,</span> msg<span class="ansi-blue-fg">,</span> hdrs<span class="ansi-blue-fg">,</span> fp<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    591</span> 
-<span class="ansi-green-intense-fg ansi-bold">    592</span> <span class="ansi-green-fg">class</span> HTTPRedirectHandler<span class="ansi-blue-fg">(</span>BaseHandler<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-
-<span class="ansi-red-fg">HTTPError</span>: HTTP Error 404: NOT FOUND</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.httpbin.org/geta&#39;</span><span class="p">)</span>
-<span class="n">r</span><span class="o">.</span><span class="n">status_code</span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[46]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>404</pre>
+<pre>{&#39;args&#39;: {},
+ &#39;headers&#39;: {&#39;Accept&#39;: &#39;*/*&#39;,
+  &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;,
+  &#39;Host&#39;: &#39;httpbin.org&#39;,
+  &#39;User-Agent&#39;: &#39;python-requests/2.10.0&#39;,
+  &#39;X-Pizza&#39;: &#39;kenneth&#39;},
+ &#39;origin&#39;: &#39;5.29.130.38&#39;,
+ &#39;url&#39;: &#39;http://httpbin.org/get&#39;}</pre>
 </div>
 
 </div>
@@ -12494,259 +12327,141 @@ Backend developer @CloudLock<br>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Let-the-user-choose-how-to-handle-errors">Let the user choose how to handle errors<a class="anchor-link" href="#Let-the-user-choose-how-to-handle-errors">&#182;</a></h3><ul>
-<li>Some programmers prefer exceptions, some prefer checks.  </li>
-<li>In some situations a check is much more elegant and sometimes it's the other way around.  </li>
-<li>It's good to let your users to choose what to use when.</li>
-<li>Defaulting to return codes allow that, while defaulting to <code>exceptions</code> do not. </li>
-</ul>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Examples:">Examples:<a class="anchor-link" href="#Examples:">&#182;</a></h4>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="k">import</span> <span class="n">urlopen</span>
-<span class="kn">from</span> <span class="nn">urllib.error</span> <span class="k">import</span> <span class="n">URLError</span><span class="p">,</span> <span class="n">HTTPError</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;http://www.httpbin.org/geta&#39;</span><span class="p">)</span>
-<span class="k">except</span> <span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Page not found&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All good&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Page not found
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">requests.exceptions</span> <span class="k">import</span> <span class="n">HTTPError</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.httpbin.org/posta&#39;</span><span class="p">)</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-<span class="k">except</span> <span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Page not found&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Page not found
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.httpbin.org/geta&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All good&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="n">requests</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">not_found</span><span class="p">:</span> 
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Page not found&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Page not found
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Libraries-code">Libraries code<a class="anchor-link" href="#Libraries-code">&#182;</a></h3><p>To end our presentation, lets review the cool implementation requests has for the <code>codes</code> class. It's goal is to:</p>
 <ul>
-<li>Allow the user to check the status code as a description string.</li>
-<li>Each status code has multiple strings that can represent it, in upper and lower case.</li>
-<li>Provide a way to access the codes as a <code>dict</code> (with square brackets or a <code>get</code> method) and as a <code>class</code> (with the dot operator).</li>
+<li>Depends on the domain and your package, there might be some different quirks that the user might need, providing a (documented!) extension mechanism can help the user adjust.</li>
+<li>In this example we create a special authentication class for our request. </li>
 </ul>
 
 </div>
 </div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://github.com/kennethreitz/requests/blob/v2.10.0/requests/structures.py">requests/structures.py</a></p>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">LookupDict</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Dictionary lookup object.&quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">LookupDict</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;&lt;lookup </span><span class="se">\&#39;</span><span class="si">%s</span><span class="se">\&#39;</span><span class="s1">&gt;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-        <span class="c1"># We allow fall-through here, so values default to None</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://github.com/kennethreitz/requests/blob/v2.10.0/requests/status_codes.py">requests/status_codes.py</a></p>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">_codes</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c1"># ...</span>
-    <span class="c1"># Client Error.</span>
-    <span class="mi">400</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;bad_request&#39;</span><span class="p">,</span> <span class="s1">&#39;bad&#39;</span><span class="p">),</span>
-    
-    <span class="c1"># Server Error.</span>
-    <span class="mi">500</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;internal_server_error&#39;</span><span class="p">,</span> <span class="s1">&#39;server_error&#39;</span><span class="p">,</span> <span class="s1">&#39;/o</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;✗&#39;</span><span class="p">),</span>
-    <span class="c1">#...</span>
-<span class="p">}</span>
-
-<span class="n">codes</span> <span class="o">=</span> <span class="n">LookupDict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;status_codes&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">code</span><span class="p">,</span> <span class="n">titles</span> <span class="ow">in</span> <span class="n">_codes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">:</span>
-        <span class="nb">setattr</span><span class="p">(</span><span class="n">codes</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">title</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">):</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="n">codes</span><span class="p">,</span> <span class="n">title</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">code</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div></div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Usage</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">codes</span><span class="o">.</span><span class="n">internal_server_error</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">codes</span><span class="o">.</span><span class="n">SERVER_ERROR</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">codes</span><span class="p">[</span><span class="s1">&#39;SERVER_ERROR&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">codes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SERVER_ERROR&#39;</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>500
-500
-500
-500
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="The-End">The End<a class="anchor-link" href="#The-End">&#182;</a></h1>
+<h2 id="Tip-#6:-Let-the-user-choose-how-to-handle-errors">Tip #6: Let the user choose how to handle errors<a class="anchor-link" href="#Tip-#6:-Let-the-user-choose-how-to-handle-errors">&#182;</a></h2>
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<span class="kn">from</span> <span class="nn">urllib.error</span> <span class="kn">import</span> <span class="n">URLError</span><span class="p">,</span> <span class="n">HTTPError</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;http://www.httpbin.org/geta&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Page not found&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;All good&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Page not found
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.httpbin.org/geta&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;All good&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="n">requests</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">not_found</span><span class="p">:</span> 
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Page not found&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Page not found
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">requests.exceptions</span> <span class="kn">import</span> <span class="n">HTTPError</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://www.httpbin.org/posta&#39;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="k">except</span> <span class="n">HTTPError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Page not found&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Page not found
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Some programmers prefer exceptions, some prefer checks.  </li>
+<li>In some situations a check is much more elegant and sometimes it's the other way around.  </li>
+<li>It's good to let your users to choose what to use when.</li>
+</ul>
+
 </div>
 </div>
 </div></section></section>
@@ -12762,8 +12477,8 @@ require(
       waitSeconds: 15
     },
     [
-      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/lib/js/head.min.js",
-      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/js/reveal.js"
+      "reveal.js/lib/js/head.min.js",
+      "reveal.js/js/reveal.js"
     ],
 
     function(head, Reveal){
@@ -12779,9 +12494,9 @@ require(
 
             // Optional libraries used to extend on reveal.js
             dependencies: [
-                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/lib/js/classList.js",
+                { src: "reveal.js/lib/js/classList.js",
                   condition: function() { return !document.body.classList; } },
-                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0/plugin/notes/notes.js",
+                { src: "reveal.js/plugin/notes/notes.js",
                   async: true,
                   condition: function() { return !!document.body.classList; } }
             ]
